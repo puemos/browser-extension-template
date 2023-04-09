@@ -1,4 +1,6 @@
-<p>Description of the exetsion</p>
+# The extension name
+
+<p>Description of the extension</p>
 
 <br><br><br>
 
