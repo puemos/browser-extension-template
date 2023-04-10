@@ -14,9 +14,10 @@
     "build": "tsc"
   },
   "devDependencies": {
-    "typescript": "5.0.4",
     "@types/node": "18.15.11",
-    "@types/redux-logger": "3.0.9"
+    "@types/redux-logger": "3.0.9",
+    "prettier": "2.8.7",
+    "typescript": "5.0.4"
   },
   "dependencies": {
     "@reduxjs/toolkit": "1.9.3",

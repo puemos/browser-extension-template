@@ -8,6 +8,7 @@
 **Table of Contents**
 
 - [Tech stack](#tech-stack)
+- [Architecture](#architecture)
 - [Build](#build)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -34,6 +35,86 @@
 
 - Design system: [Chakra UI](https://chakra-ui.com/)
 - Icons: [Lucide](https://lucide.dev/)
+
+## Architecture
+
+### Core
+
+#### Entities
+
+WIP
+
+#### Use cases
+
+WIP
+
+#### Services
+
+WIP
+
+#### Store
+
+WIP
+
+#### Controllers
+
+WIP
+
+### Apps
+
+#### Popup
+
+The extension's popup app.
+
+components - Shared components
+modules - Your app's features
+
+```console
+src
+├── components
+│   ├── Navbar.stories.tsx
+│   ├── Navbar.tsx
+│   └── NavLink.tsx
+├── modules
+│   ├── About
+│   │   ├── AboutController.ts
+│   │   ├── AboutModule.tsx
+│   │   └── AboutView.tsx
+│   ├── Home
+│   │   ├── HomeModule.tsx
+│   │   ├── HomeView.stories.tsx
+│   │   └── HomeView.tsx
+│   └── Settings
+│      ├── SettingsController.ts
+│      ├── SettingsModule.tsx
+│      └── SettingsView.tsx
+├── index.tsx
+├── App.tsx
+├── setupTests.ts
+└── theme.ts
+```
+
+##### Modules
+
+Each module is separated into a controller with business logic, a view with UI only (no logic), and a module that glue them together.
+
+#### Background
+
+WIP
+
+## Scripts
+
+| Script                          | Job                                         |
+| ------------------------------- | ------------------------------------------- |
+| `./scripts/build.sh`            | Build all the app and create a zip file.    |
+| `./scripts/build-background.sh` | Build only the extension's background app.  |
+| `./scripts/build-popup.sh`      | Build only the extension's popup app.       |
+| `./scripts/build-core.sh`       | Build only the extension's core library.    |
+| `./scripts/build-extension.sh`  | Build all the extension's apps.             |
+| `./scripts/clean.sh`            | Clean the build dir.                        |
+| `./scripts/copy-assets.sh`      | Copy the extension's non-code assets,       |
+| `./scripts/dev.sh`              | Build and watch for changes.                |
+| `./scripts/storybook.sh`        | Run Storybook for the extension's popup app |
 
 ## Build
 

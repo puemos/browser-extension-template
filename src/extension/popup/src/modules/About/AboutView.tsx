@@ -1,8 +1,11 @@
-import { Box, Link, Stack, Text } from "@chakra-ui/react";
+import { Box, Stack, Text } from "@chakra-ui/react";
 import React from "react";
-import { runtime } from "webextension-polyfill";
 
-const AboutView = () => {
+interface Props {
+  version: string;
+}
+
+const AboutView = ({ version }: Props) => {
   return (
     <Stack spacing="1rem" p="1rem" pr="0rem">
       <Stack
@@ -25,7 +28,7 @@ const AboutView = () => {
             Version
           </Text>
         </Box>
-        <Box>{runtime.getManifest().version}</Box>
+        <Box>{version}</Box>
       </Stack>
     </Stack>
   );

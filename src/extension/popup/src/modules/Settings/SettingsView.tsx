@@ -1,30 +1,18 @@
-import { RootState } from "@extension/core/lib/store";
-import { configSlice } from "@extension/core/lib/store/slices/config-slice";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 import { Box, Flex, IconButton, Stack, Text } from "@chakra-ui/react";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 
-const SettingsView = () => {
-  const dispatch = useDispatch();
-  debugger;
-  const option = useSelector<RootState, number>((state) => state.config.option);
+interface Props {
+  option: number;
+  onOptionIncrease: () => void;
+  onOptionDecrease: () => void;
+}
 
-  function onOptionIncrease() {
-    dispatch(
-      configSlice.actions.setOption({
-        option: option + 1,
-      })
-    );
-  }
-  function onOptionDecrease() {
-    dispatch(
-      configSlice.actions.setOption({
-        option: Math.max(1, option - 1),
-      })
-    );
-  }
-
+const SettingsView = ({
+  option,
+  onOptionIncrease,
+  onOptionDecrease,
+}: Props) => {
   return (
     <Stack spacing="1rem" p="1rem" pr="0rem">
       <Stack

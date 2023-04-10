@@ -22,11 +22,11 @@ export function NavLink(props: {
           }}
           onClick={() => navigate(props.path)}
         >
-          <Stack alignItems={"center"} spacing={1}>
+          <Stack alignItems={"center"} spacing={0.5}>
             {React.cloneElement(props.icon, {
               size: 24,
             })}
-            <Text size="sm" fontWeight={"semibold"}>
+            <Text fontSize={"sm"} fontWeight={"semibold"}>
               {props.label}
             </Text>
           </Stack>

@@ -7,8 +7,11 @@ import { ColorModeScript, ChakraProvider } from "@chakra-ui/react";
 import theme from "./theme";
 
 import { Store as IStore } from "@extension/core/lib/store";
+import { tabs } from "webextension-polyfill";
 
 (async () => {
+  await tabs.query({ active: true, currentWindow: true });
+
   const store = new Store();
 
   await store.ready();

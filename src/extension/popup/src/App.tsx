@@ -1,15 +1,15 @@
 import { Box, Flex } from "@chakra-ui/react";
 import React from "react";
 import {
-  BrowserRouter as Router,
   Route,
+  BrowserRouter as Router,
   Routes,
-  Navigate,
+  useLocation,
 } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
-import SettingsView from "./views/SettingsView";
-import AboutView from "./views/AboutView";
-import HomeView from "./views/HomeView";
+import HomeModule from "./modules/Home/HomeModule";
+import SettingsModule from "./modules/Settings/SettingsModule";
+import AboutModule from "./modules/About/AboutModule";
 
 function App() {
   return (
@@ -39,10 +39,10 @@ function App() {
             }}
           >
             <Routes>
-              <Route path="index.html" element={<HomeView />} />
-              <Route path="/" element={<HomeView />} />
-              <Route path="settings" element={<SettingsView />}></Route>
-              <Route path="about" element={<AboutView />}></Route>
+              <Route path="index.html" element={<HomeModule />} />
+              <Route path="/" element={<HomeModule />} />
+              <Route path="settings" element={<SettingsModule />}></Route>
+              <Route path="about" element={<AboutModule />}></Route>
             </Routes>
           </Box>
           <Navbar></Navbar>
