@@ -1,15 +1,13 @@
-# The extension name
+# Browser Extension Template
 
-<p>Description of the extension</p>
+| ![home](https://user-images.githubusercontent.com/13174025/230798365-c448e8e4-864f-40bd-89e3-7a05f5a2418d.png) | ![about](https://user-images.githubusercontent.com/13174025/230798368-8bb5c4d1-61c1-4f0a-8766-96e1e07d4988.png) | ![settings](https://user-images.githubusercontent.com/13174025/230798370-f04a1ab2-f74c-4bca-8c3e-2838f822f592.png) |
+| -------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 
-<br><br><br>
+<br>
 
 **Table of Contents**
 
-- [Get it](#get-it)
-  - [Firefox](#firefox)
-  - [Microsoft Edge](#microsoft-edge)
-  - [Google](#google)
+- [Tech stack](#tech-stack)
 - [Build](#build)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -19,25 +17,23 @@
 
 <br>
 
-## Get it
+## Tech stack
 
-### Firefox
+### Extension compitability
 
-<a href="https://addons.mozilla.org/en-US/firefox/addon/NAME/" target="_blank">
- <img src="https://blog.mozilla.org/addons/files/2015/11/get-the-addon.png" alt="Firefox" height="50px" >
-</a>
+- [WebExtension browser API Polyfill](https://github.com/mozilla/webextension-polyfill)
 
-### Microsoft Edge
+### State managment
 
-<a href="https://microsoftedge.microsoft.com/addons/detail/NAME" target="_blank">
- <img src="https://developer.microsoft.com/store/badges/images/English_get-it-from-MS.png" alt="Microsoft Edge" height="50px" >
-</a>
+- [Redux](https://redux.js.org/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [WebExt Redux](https://github.com/tshaddix/webext-redux)
+- Side effect: [RxJS](https://rxjs.dev/guide/overview) and [redux-observable](https://redux-observable.js.org/)
 
-### Google
+### User interface
 
-<a href="https://chrome.google.com/webstore/detail/NAME" target="_blank">
- <img src="https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/HRs9MPufa1J1h5glNhut.png" alt="Google" height="50px" >
-</a>
+- Design system: [Chakra UI](https://chakra-ui.com/)
+- Icons: [Lucide](https://lucide.dev/)
 
 ## Build
 
