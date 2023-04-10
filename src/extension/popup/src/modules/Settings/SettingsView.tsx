@@ -1,5 +1,5 @@
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
-import { Box, Flex, IconButton, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, IconButton, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 
 interface Props {
@@ -15,6 +15,9 @@ const SettingsView = ({
 }: Props) => {
   return (
     <Stack spacing="1rem" p="1rem" pr="0rem">
+      <Heading fontSize="lg" fontWeight="semibold">
+        Settings
+      </Heading>
       <Stack
         p="1rem"
         rounded="lg"
