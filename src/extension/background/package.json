@@ -9,6 +9,7 @@
     "lib"
   ],
   "scripts": {
+    "dev": "vite build -w",
     "build": "vite build"
   },
   "devDependencies": {

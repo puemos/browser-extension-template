@@ -9,8 +9,10 @@ export default defineConfig(({ mode }) => ({
       fileName: () => "background.js",
       formats: ["umd"],
     },
-    emptyOutDir: true,
+    target: "es2022",
     sourcemap: true,
+    minify: false,
+    outDir: resolve(__dirname, "../../../dist"),
   },
   define: {
     "process.env.NODE_ENV": JSON.stringify(mode),

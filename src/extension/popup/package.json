@@ -9,6 +9,7 @@
     "@emotion/styled": "^11.10.6",
     "@extension/core": "file:../../core",
     "framer-motion": "^10.11.2",
+    "lucide-react": "^0.137.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-redux": "^7.2.6",
@@ -28,7 +29,7 @@
     "vite": "4.2.1"
   },
   "scripts": {
-    "start": "vite",
+    "dev": "vite build -w",
     "build": "vite build"
   },
   "eslintConfig": {

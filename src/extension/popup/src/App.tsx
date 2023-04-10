@@ -6,21 +6,20 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import { Navbar } from "./views/NavbarView";
+import { Navbar } from "./components/Navbar";
 import SettingsView from "./views/SettingsView";
 import AboutView from "./views/AboutView";
+import HomeView from "./views/HomeView";
 
 function App() {
   return (
     <Box bg="gray.900" width="500px" height="500px">
       <Router>
-        <Flex direction="column">
-          <Navbar></Navbar>
+        <Flex direction="column" height={"100%"}>
           <Box
             overflowY="scroll"
             className="Main"
-            height={500 - 72}
-            pt="1rem"
+            flex="1"
             css={{
               "&::-webkit-scrollbar": {
                 width: "1rem",
@@ -40,11 +39,13 @@ function App() {
             }}
           >
             <Routes>
-              <Route path="index.html" element={<Navigate to="/about" />} />
+              <Route path="index.html" element={<HomeView />} />
+              <Route path="/" element={<HomeView />} />
               <Route path="settings" element={<SettingsView />}></Route>
               <Route path="about" element={<AboutView />}></Route>
             </Routes>
           </Box>
+          <Navbar></Navbar>
         </Flex>
       </Router>
     </Box>
