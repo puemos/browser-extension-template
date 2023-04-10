@@ -1,7 +1,9 @@
 # Browser Extension Template
 
-| ![home](https://user-images.githubusercontent.com/13174025/230798365-c448e8e4-864f-40bd-89e3-7a05f5a2418d.png) | ![about](https://user-images.githubusercontent.com/13174025/230798368-8bb5c4d1-61c1-4f0a-8766-96e1e07d4988.png) | ![settings](https://user-images.githubusercontent.com/13174025/230798370-f04a1ab2-f74c-4bca-8c3e-2838f822f592.png) |
-| -------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Home | About | Settings |
+| --| --| --|
+| <img alt="home" src="https://user-images.githubusercontent.com/13174025/230899640-d6ccd79d-ed32-469c-b9b7-8b71f7e1ed9e.png" /> | <img alt="about" src="https://user-images.githubusercontent.com/13174025/230899718-defb7c75-b8ee-4aae-af6b-31728685ac63.png" /> | <img alt="settings" src="https://user-images.githubusercontent.com/13174025/230898457-13563ea3-6662-4757-9145-dc4d854f6e78.png" /> |
+
 
 <br>
 
@@ -11,7 +13,6 @@
 - [Architecture](#architecture)
 - [Build](#build)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Contributing](#contributing)
 - [Contributor Covenant Code of Conduct](#contributor-covenant-code-of-conduct)
 - [License](#license)
@@ -20,47 +21,204 @@
 
 ## Tech stack
 
-### Extension compitability
+### User interface
 
-- [WebExtension browser API Polyfill](https://github.com/mozilla/webextension-polyfill)
+- User interfaces: [React](https://react.dev/) 
+- Design system: [Chakra UI](https://chakra-ui.com/)
+- Development: [Storybook](https://storybook.js.org/)
+- Icons: [Lucide](https://lucide.dev/)
+
+### Extension
+
+- Compitability: [WebExtension browser API Polyfill](https://github.com/mozilla/webextension-polyfill)
+- Cross-app communication: [WebExt Redux](https://github.com/tshaddix/webext-redux)
 
 ### State managment
 
-- [Redux](https://redux.js.org/)
-- [Redux Toolkit](https://redux-toolkit.js.org/)
-- [WebExt Redux](https://github.com/tshaddix/webext-redux)
+- State Container: [Redux](https://redux.js.org/)
+- Tooling: [Redux Toolkit](https://redux-toolkit.js.org/)
 - Side effect: [RxJS](https://rxjs.dev/guide/overview) and [redux-observable](https://redux-observable.js.org/)
 
-### User interface
-
-- Design system: [Chakra UI](https://chakra-ui.com/)
-- Icons: [Lucide](https://lucide.dev/)
-
 ## Architecture
+
+<img width="50%" src="https://user-images.githubusercontent.com/13174025/230900357-d804ded6-9939-406b-aefd-52abfecdf91e.png" />
 
 ### Core
 
 #### Entities
 
-WIP
+- Represent your domain object
+- Apply only logic that is applicable in general to the whole entity (e.g., validating the format of a hostname)
+- Typescript classes
+- More examples: (here)[https://github.com/puemos/hls-downloader/tree/master/src/core/src/entities]
+
+```ts
+import { Key } from "./key";
+
+export class Fragment {
+  constructor(
+    readonly key: Key,
+    readonly uri: string,
+    readonly index: number
+  ) {}
+}
+```
 
 #### Use cases
 
-WIP
+- Represent an isolated signle piece of your business actions: it’s what you can do with the application. Expect one use case for each business action
+- Pure business logic, plain code (except maybe some utils libraries)
+- The use case doesn’t know who triggered it and how the results are going to be presented.
+- More examples: (here)[https://github.com/puemos/hls-downloader/tree/master/src/core/src/use-cases]
+
+
+```ts
+import { Fragment } from "../entities";
+import { ILoader } from "../services";
+
+export const downloadSingleFactory = (loader: ILoader) => {
+  const run = async (
+    fragment: Fragment,
+    fetchAttempts: number
+  ): Promise<ArrayBuffer> => {
+    const data = await loader.fetchArrayBuffer(fragment.uri, fetchAttempts);
+    return data;
+  };
+  return run;
+};
+```
 
 #### Services
 
-WIP
+- Interfaces of services which will be injected to use-cases
+- More examples: (here)[https://github.com/puemos/hls-downloader/tree/master/src/core/src/services]
+
+```ts
+export interface ILoader {
+  fetchText(url: string, attempts?: number): Promise<string>;
+  fetchArrayBuffer(url: string, attempts?: number): Promise<ArrayBuffer>;
+}
+```
+
+#### Controllers
+
+- A chain of use-cases triggered by a redux event
+- Written with the help of RxJs
+- More examples: (here)[https://github.com/puemos/hls-downloader/tree/master/src/core/src/controllers]
+
+```ts
+import { Epic } from "redux-observable";
+import { of } from "rxjs";
+import { filter, map, mergeMap } from "rxjs/operators";
+import { RootAction, RootState } from "../adapters/redux/root-reducer";
+import { jobsSlice } from "../adapters/redux/slices";
+import { Dependencies } from "../services";
+
+export const incDownloadStatusEpic: Epic<
+  RootAction,
+  RootAction,
+  RootState,
+  Dependencies
+> = (action$, store$) =>
+  action$.pipe(
+    filter(jobsSlice.actions.incDownloadStatus.match),
+    map((action) => action.payload.jobId),
+    map((id) => ({ id, status: store$.value.jobs.jobsStatus[id] })),
+    filter(({ status }) => Boolean(status)),
+    filter(({ status }) => status!.done === status!.total),
+    mergeMap(({ id }) => {
+      return of(
+        jobsSlice.actions.finishDownload({
+          jobId: id,
+        }),
+        jobsSlice.actions.saveAs({
+          jobId: id,
+        })
+      );
+    })
+  );
+
+```
 
 #### Store
 
 WIP
 
-#### Controllers
-
-WIP
 
 ### Apps
+
+#### Background
+
+##### Listeners
+
+- Register listeners for broswer events, do some magic and change your app's shared state (using the core library)
+- Add them to `subscribeListeners` in the `index.ts` file
+- More examples: (here)[https://github.com/puemos/hls-downloader/tree/master/src/extension/extension-background/src/listeners]
+
+```ts
+import { tabs } from "webextension-polyfill";
+import { createStore } from "@hls-downloader/core/lib/store/configure-store";
+import { tabsSlice } from "@hls-downloader/core/lib/store/slices";
+
+export function setTabListener(store: ReturnType<typeof createStore>) {
+  tabs.onActivated.addListener(async (details) => {
+    store.dispatch(
+      tabsSlice.actions.setTab({
+        tab: {
+          id: details.tabId,
+        },
+      })
+    );
+  });
+}
+```
+
+##### Services
+
+- Implementation of the core's library services
+- You can have multiple Implementations for the same services (e.g MemoryFS, IndexedDBFS)
+- More examples: (here)[https://github.com/puemos/hls-downloader/tree/master/src/extension/extension-background/src/services]
+
+
+```ts
+type FetchFn<Data> = () => Promise<Data>;
+
+async function fetchWithRetry<Data>(
+  fetchFn: FetchFn<Data>,
+  attempts: number = 1
+): Promise<Data> {
+  if (attempts < 1) {
+    throw new Error("Attempts less then 1");
+  }
+  let countdown = attempts;
+  while (countdown--) {
+    try {
+      return await fetchFn();
+    } catch (e) {
+      if (countdown < 1 && countdown < attempts) {
+        const retryTime = 100;
+        await new Promise((resolve) => setTimeout(resolve, retryTime));
+      }
+    }
+  }
+  throw new Error("Fetch error");
+}
+
+export async function fetchText(url: string, attempts: number = 1) {
+  const fetchFn: FetchFn<string> = () => fetch(url).then((res) => res.text());
+  return fetchWithRetry(fetchFn, attempts);
+}
+
+export async function fetchArrayBuffer(url: string, attempts: number = 1) {
+  const fetchFn: FetchFn<ArrayBuffer> = () =>
+    fetch(url).then((res) => res.arrayBuffer());
+  return fetchWithRetry(fetchFn, attempts);
+}
+export const FetchLoader = {
+  fetchText,
+  fetchArrayBuffer,
+};
+```
 
 #### Popup
 
@@ -98,9 +256,7 @@ src
 
 Each module is separated into a controller with business logic, a view with UI only (no logic), and a module that glue them together.
 
-#### Background
 
-WIP
 
 ## Scripts
 
@@ -116,13 +272,21 @@ WIP
 | `./scripts/dev.sh`              | Build and watch for changes.                |
 | `./scripts/storybook.sh`        | Run Storybook for the extension's popup app |
 
-## Build
+## Development
 
+### Build
 1. Clone the repo
 2. Ensure you have node, npm installed
-3. Run `sh ./build.sh`
-4. Raw files will be at `./src/extension/dist/`
+3. Run `sh ./scripts/build.sh`
+4. Raw files will be at `./dist/`
 5. The zip will be in `./extension-archive.zip`
+
+### Design
+
+<img width="50%" src="https://user-images.githubusercontent.com/13174025/230898450-a75bb70a-20a4-4551-bffc-7924045e1dbd.png" />
+
+1. Run `sh ./scripts/storybook.sh`
+2. Work on the UI in `src/extension/popup`
 
 ## Installation
 
@@ -131,9 +295,6 @@ WIP
 3. Drop the `zip` file into the page
 4. Enjoy :)
 
-## Usage
-
-TODO: Write usage instructions
 
 ## Contributing
 
