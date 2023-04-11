@@ -39,7 +39,7 @@ function App() {
             }}
           >
             <Routes>
-              <Route path="index.html" element={<HomeModule />} />
+              <Route path="options.html" element={<HomeModule />} />
               <Route path="/" element={<HomeModule />} />
               <Route path="settings" element={<SettingsModule />}></Route>
               <Route path="about" element={<AboutModule />}></Route>

@@ -9,9 +9,12 @@ export default defineConfig({
     outDir: resolve(__dirname, "../../../dist"),
     rollupOptions: {
       output: {
-        entryFileNames: `[name].js`,
-        chunkFileNames: `[name].js`,
-        assetFileNames: `[name].[ext]`,
+        entryFileNames: `options.js`,
+        chunkFileNames: `options.js`,
+        assetFileNames: `options.[ext]`,
+      },
+      input: {
+        app: "./options.html",
       },
     },
   },
