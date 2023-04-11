@@ -2,7 +2,7 @@ import { Box, Flex } from "@chakra-ui/react";
 import React from "react";
 import {
   Route,
-  BrowserRouter as Router,
+  MemoryRouter as Router,
   Routes,
   useLocation,
 } from "react-router-dom";
@@ -61,6 +61,7 @@ function App() {
               <Route path="/" element={<HomeModule />} />
               <Route path="settings" element={<SettingsModule />}></Route>
               <Route path="about" element={<AboutModule />}></Route>
+              <Route path="*" element={<HomeModule />} />
             </Routes>
           </Box>
           <Navbar></Navbar>
