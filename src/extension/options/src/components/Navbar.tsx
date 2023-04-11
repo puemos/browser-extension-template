@@ -9,12 +9,12 @@ export function Navbar() {
   return (
     <Stack
       isInline
-      borderTopWidth={"thin"}
-      borderTopColor="gray.800"
-      py="0.5rem"
+      borderBottomWidth={"thin"}
+      borderBottomColor="gray.800"
+      py="1rem"
       px="6rem"
       w={"100%"}
-      justifyContent="space-between"
+      justifyContent="space-around"
     >
       <Box>
         <NavLink

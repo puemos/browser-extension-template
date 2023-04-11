@@ -2,7 +2,7 @@ import { Box, Flex } from "@chakra-ui/react";
 import React from "react";
 import {
   Route,
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   useLocation,
 } from "react-router-dom";
@@ -13,9 +13,11 @@ import AboutModule from "./modules/About/AboutModule";
 
 function App() {
   return (
-    <Box bg="gray.900" width="500px" height="500px">
+    <Box bg="gray.900" width="100%" height="100vh">
       <Router>
         <Flex direction="column" height={"100%"}>
+          <Navbar></Navbar>
+
           <Box
             overflowY="scroll"
             className="Main"
@@ -45,7 +47,6 @@ function App() {
               <Route path="about" element={<AboutModule />}></Route>
             </Routes>
           </Box>
-          <Navbar></Navbar>
         </Flex>
       </Router>
     </Box>

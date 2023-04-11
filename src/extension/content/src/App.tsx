@@ -30,6 +30,7 @@ function App() {
       borderRadius={"2xl"}
       overflow={"hidden"}
       color={"white"}
+      fontFamily={"sans-serif"}
     >
       <Router>
         <Flex direction="column" height={"100%"}>
