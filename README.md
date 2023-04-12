@@ -277,7 +277,8 @@ Each module is separated into a controller with business logic, a view with UI o
 
 ### Design
 
-<img width="50%" src="https://user-images.githubusercontent.com/13174025/230898450-a75bb70a-20a4-4551-bffc-7924045e1dbd.png" />
+<img width="50%" src="https://user-images.githubusercontent.com/13174025/231569562-4d1cc56e-0f2d-4fec-a2e0-aeb5b3ad45c2.png" />
+
 
 1. Run `sh ./scripts/storybook.sh`
 2. Work on the UI in `src/content`
