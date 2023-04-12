@@ -1,4 +1,4 @@
-import { Box, Button, Heading, Stack, Text } from "@chakra-ui/react";
+import { Button } from "@extension/design-system";
 import React from "react";
 
 interface Props {
@@ -7,57 +7,42 @@ interface Props {
 
 const AboutView = ({ version }: Props) => {
   return (
-    <Stack spacing="1rem" p="1rem" pr="0rem">
-      <Heading fontSize="lg" fontWeight="semibold">
-        About
-      </Heading>
-      <Stack
-        p="1rem"
-        h="4rem"
-        rounded="lg"
-        bg="gray.800"
-        isInline
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        <Box>
-          <Text fontSize="md" fontWeight="semibold">
-            <span
-              aria-label="plant"
-              role="img"
-              style={{ marginRight: "0.5rem" }}
-            >
+    <div className="max-w-md flex flex-col space-y-3 p-1 mt-4">
+      <p className="text-sm text-slate-700 dark:text-slate-200">
+        This browser extension template was made with love by Shy Alter. Please
+        support the project at{" "}
+        <a
+          href="https://github.com/puemos/browser-extension-template"
+          target="_blank"
+          className="text-black dark:text-white underline"
+        >
+          https://github.com/puemos/browser-extension-template
+        </a>
+      </p>
+
+      <div className="p-3 h-16 flex shrink-0 items-center justify-between rounded-md border bg-slate-200 dark:bg-slate-700">
+        <div>
+          <p className="text-sm font-semibold">
+            <span aria-label="plant" role="img" className="mr-2">
               🌱
             </span>
             Version
-          </Text>
-        </Box>
-        <Box>{version}</Box>
-      </Stack>
-      <Stack
-        p="1rem"
-        h="4rem"
-        rounded="lg"
-        bg="gray.800"
-        isInline
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        <Box>
-          <Text fontSize="md" fontWeight="semibold">
-            <span
-              aria-label="plant"
-              role="img"
-              style={{ marginRight: "0.5rem" }}
-            >
+          </p>
+        </div>
+        <div className="text-sm font-semibold">{version}</div>
+      </div>
+      <div className="p-3 h-16 flex shrink-0 items-center justify-between rounded-md border bg-slate-200 dark:bg-slate-700">
+        <div>
+          <p className="text-sm font-semibold">
+            <span aria-label="plant" role="img" className="mr-2">
               🐞
             </span>
             Report a bug
-          </Text>
-        </Box>
-        <Button>Report</Button>
-      </Stack>
-    </Stack>
+          </p>
+        </div>
+        <Button size="sm">Report</Button>
+      </div>
+    </div>
   );
 };
 

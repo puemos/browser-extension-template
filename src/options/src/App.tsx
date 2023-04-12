@@ -1,55 +1,35 @@
-import { Box, Flex } from "@chakra-ui/react";
 import React from "react";
-import {
-  Route,
-  HashRouter as Router,
-  Routes,
-  useLocation,
-} from "react-router-dom";
-import { Navbar } from "./components/Navbar";
+import AboutModule from "./modules/About/AboutModule";
 import HomeModule from "./modules/Home/HomeModule";
 import SettingsModule from "./modules/Settings/SettingsModule";
-import AboutModule from "./modules/About/AboutModule";
+
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@extension/design-system";
 
 function App() {
   return (
-    <Box bg="gray.900" width="100%" height="100vh">
-      <Router>
-        <Flex direction="column" height={"100%"}>
-          <Navbar></Navbar>
-
-          <Box
-            overflowY="scroll"
-            className="Main"
-            flex="1"
-            css={{
-              "&::-webkit-scrollbar": {
-                width: "1rem",
-              },
-              "&": {
-                "scrollbar-width": "thin",
-                "scrollbar-color": "#303038 var(--chakra-colors-gray-900)",
-              },
-              "&::-webkit-scrollbar-track": {
-                background: "var(--chakra-colors-gray-900)",
-              },
-              "&::-webkit-scrollbar-thumb": {
-                backgroundColor: "#303038",
-                borderRadius: "1rem",
-                border: "5px solid var(--chakra-colors-gray-900)",
-              },
-            }}
-          >
-            <Routes>
-              <Route path="options.html" element={<HomeModule />} />
-              <Route path="/" element={<HomeModule />} />
-              <Route path="settings" element={<SettingsModule />}></Route>
-              <Route path="about" element={<AboutModule />}></Route>
-            </Routes>
-          </Box>
-        </Flex>
-      </Router>
-    </Box>
+    <div className="min-h-screen rounded-md bg-white shadow-2xl transition-all p-4 font-sans text-slate-900 antialiased dark:bg-slate-900 dark:text-slate-50">
+      <Tabs defaultValue="home">
+        <TabsList>
+          <TabsTrigger value="home">Home</TabsTrigger>
+          <TabsTrigger value="settings">Settings</TabsTrigger>
+          <TabsTrigger value="about">About</TabsTrigger>
+        </TabsList>
+        <TabsContent value="home">
+          <HomeModule />
+        </TabsContent>
+        <TabsContent value="settings">
+          <SettingsModule />
+        </TabsContent>
+        <TabsContent value="about">
+          <AboutModule />
+        </TabsContent>
+      </Tabs>
+    </div>
   );
 }
 export default App;

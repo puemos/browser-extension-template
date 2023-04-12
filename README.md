@@ -1,9 +1,5 @@
 # Browser Extension Template
 
-| Home | About | Settings |
-| --| --| --|
-| <img alt="home" src="https://user-images.githubusercontent.com/13174025/230899640-d6ccd79d-ed32-469c-b9b7-8b71f7e1ed9e.png" /> | <img alt="about" src="https://user-images.githubusercontent.com/13174025/230899718-defb7c75-b8ee-4aae-af6b-31728685ac63.png" /> | <img alt="settings" src="https://user-images.githubusercontent.com/13174025/230898457-13563ea3-6662-4757-9145-dc4d854f6e78.png" /> |
-
 
 <br>
 
@@ -23,7 +19,7 @@
 
 ### User interface
 
-- User interfaces: [React](https://react.dev/) 
+- User interfaces: [React](https://react.dev/)
 - Design system: [Chakra UI](https://chakra-ui.com/)
 - Development: [Storybook](https://storybook.js.org/)
 - Icons: [Lucide](https://lucide.dev/)
@@ -42,6 +38,10 @@
 ## Architecture
 
 <img width="50%" src="https://user-images.githubusercontent.com/13174025/230900357-d804ded6-9939-406b-aefd-52abfecdf91e.png" />
+
+### Design system
+
+All the shared UI components
 
 ### Core
 
@@ -70,7 +70,6 @@ export class Fragment {
 - Pure business logic, plain code (except maybe some utils libraries)
 - The use case doesn’t know who triggered it and how the results are going to be presented.
 - More examples: (here)[https://github.com/puemos/hls-downloader/tree/master/src/core/src/use-cases]
-
 
 ```ts
 import { Fragment } from "../entities";
@@ -137,13 +136,11 @@ export const incDownloadStatusEpic: Epic<
       );
     })
   );
-
 ```
 
 #### Store
 
 WIP
-
 
 ### Apps
 
@@ -178,7 +175,6 @@ export function setTabListener(store: ReturnType<typeof createStore>) {
 - Implementation of the core's library services
 - You can have multiple Implementations for the same services (e.g MemoryFS, IndexedDBFS)
 - More examples: (here)[https://github.com/puemos/hls-downloader/tree/master/src/extension-background/src/services]
-
 
 ```ts
 type FetchFn<Data> = () => Promise<Data>;
@@ -220,19 +216,15 @@ export const FetchLoader = {
 };
 ```
 
-#### Popup
+#### Content
 
-The extension's popup app.
+The extension's content app.
 
 components - Shared components
 modules - Your app's features
 
 ```console
 src
-├── components
-│   ├── Navbar.stories.tsx
-│   ├── Navbar.tsx
-│   └── NavLink.tsx
 ├── modules
 │   ├── About
 │   │   ├── AboutController.ts
@@ -256,25 +248,25 @@ src
 
 Each module is separated into a controller with business logic, a view with UI only (no logic), and a module that glue them together.
 
-
-
 ## Scripts
 
-| Script                          | Job                                         |
-| ------------------------------- | ------------------------------------------- |
-| `./scripts/build.sh`            | Build all the app and create a zip file.    |
-| `./scripts/build-background.sh` | Build only the extension's background app.  |
-| `./scripts/build-popup.sh`      | Build only the extension's popup app.       |
-| `./scripts/build-core.sh`       | Build only the extension's core library.    |
-| `./scripts/build-extension.sh`  | Build all the extension's apps.             |
-| `./scripts/clean.sh`            | Clean the build dir.                        |
-| `./scripts/copy-assets.sh`      | Copy the extension's non-code assets,       |
-| `./scripts/dev.sh`              | Build and watch for changes.                |
-| `./scripts/storybook.sh`        | Run Storybook for the extension's popup app |
+| Script                             | Job                                           |
+| ---------------------------------- | --------------------------------------------- |
+| `./scripts/build.sh`               | Build all the app and create a zip file.      |
+| `./scripts/build-background.sh`    | Build only the extension's background app.    |
+| `./scripts/build-design-system.sh` | Build design-system.                          |
+| `./scripts/build-content.sh`       | Build only the extension's content app.       |
+| `./scripts/build-core.sh`          | Build only the extension's core library.      |
+| `./scripts/build-extension.sh`     | Build all the extension's apps.               |
+| `./scripts/clean.sh`               | Clean the build dir.                          |
+| `./scripts/copy-assets.sh`         | Copy the extension's non-code assets,         |
+| `./scripts/dev.sh`                 | Build and watch for changes.                  |
+| `./scripts/storybook.sh`           | Run Storybook for the extension's content app |
 
 ## Development
 
 ### Build
+
 1. Clone the repo
 2. Ensure you have node, npm installed
 3. Run `sh ./scripts/build.sh`
@@ -286,7 +278,7 @@ Each module is separated into a controller with business logic, a view with UI o
 <img width="50%" src="https://user-images.githubusercontent.com/13174025/230898450-a75bb70a-20a4-4551-bffc-7924045e1dbd.png" />
 
 1. Run `sh ./scripts/storybook.sh`
-2. Work on the UI in `src/popup`
+2. Work on the UI in `src/content`
 
 ## Installation
 
@@ -294,7 +286,6 @@ Each module is separated into a controller with business logic, a view with UI o
 2. Open `chrome://extensions/`
 3. Drop the `zip` file into the page
 4. Enjoy :)
-
 
 ## Contributing
 

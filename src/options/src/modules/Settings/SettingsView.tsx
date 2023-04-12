@@ -1,5 +1,4 @@
-import { AddIcon, MinusIcon } from "@chakra-ui/icons";
-import { Box, Flex, Heading, IconButton, Stack, Text } from "@chakra-ui/react";
+import { Button } from "@extension/design-system";
 import React from "react";
 
 interface Props {
@@ -14,55 +13,36 @@ const SettingsView = ({
   onOptionDecrease,
 }: Props) => {
   return (
-    <Stack spacing="1rem" p="1rem" pr="0rem">
-      <Heading fontSize="lg" fontWeight="semibold">
-        Settings
-      </Heading>
-      <Stack
-        p="1rem"
-        rounded="lg"
-        bg="gray.800"
-        isInline
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        <Box>
-          <Text fontSize="md" fontWeight="semibold">
-            Option
-          </Text>
-        </Box>
-        <Stack isInline>
-          <IconButton
-            icon={<AddIcon />}
-            size="sm"
-            aria-label="increase option"
-            onClick={onOptionIncrease}
-            bg="#5666f3"
-          ></IconButton>
-          <Flex
-            width="4rem"
-            height="2rem"
-            pl="16px"
-            pr="16px"
-            justifyContent="center"
-            alignItems="center"
-            borderRadius="0.25rem"
-            bg="gray.600"
-          >
-            <Text fontSize="md" fontWeight="semibold">
-              {option}
-            </Text>
-          </Flex>
-          <IconButton
-            size="sm"
-            icon={<MinusIcon />}
-            aria-label="decrease option"
-            bg="#5666f3"
-            onClick={onOptionDecrease}
-          ></IconButton>
-        </Stack>
-      </Stack>
-    </Stack>
+    <div className="max-w-md flex flex-col space-y-3 p-1 mt-4">
+      <div className="p-3 h-16 flex shrink-0 items-center justify-between rounded-md border bg-slate-200 dark:bg-slate-700">
+        <div>
+          <p className="text-sm font-semibold">Option</p>
+        </div>
+        <div className="">
+          <div className="h-4 p-1 rounded-lg flex flex-row justify-between items-center">
+            <Button
+              className="w-6 h-6"
+              size="sm"
+              aria-label="increase option"
+              onClick={onOptionIncrease}
+            >
+              +
+            </Button>
+            <div className="flex flex-row w-4 h-2 px-4 justify-center items-center rounded-lg">
+              <p className="text-md font-semibold">{option}</p>
+            </div>
+            <Button
+              className="w-6 h-6"
+              size="sm"
+              aria-label="decrease option"
+              onClick={onOptionDecrease}
+            >
+              -
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

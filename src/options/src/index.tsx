@@ -3,8 +3,7 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { Store } from "webext-redux";
 import App from "./App";
-import { ColorModeScript, ChakraProvider } from "@chakra-ui/react";
-import theme from "./theme";
+import "./index.css";
 
 import { Store as IStore } from "@extension/core/lib/store";
 import { tabs } from "webextension-polyfill";
@@ -19,10 +18,7 @@ import { tabs } from "webextension-polyfill";
   ReactDOM.render(
     <Provider store={store as IStore}>
       <React.StrictMode>
-        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-        <ChakraProvider theme={theme}>
-          <App />
-        </ChakraProvider>
+        <App />
       </React.StrictMode>
     </Provider>,
     document.getElementById("root")
