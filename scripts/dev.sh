@@ -1,7 +1,7 @@
 (sh ./scripts/copy-assets.sh) &
 (npm run --prefix src/core dev) &
-(npm run --prefix src/extension/background dev) &
-(npm run --prefix src/extension/content dev) &
-(npm run --prefix src/extension/options dev) &
+(npm run --prefix src/background dev) &
+(npm run --prefix src/content dev) &
+(npm run --prefix src/options dev) &
 
 wait

@@ -1,2 +1,2 @@
-npm i --prefix src/extension/background -ci
-npm run --prefix src/extension/background build
+npm i --prefix src/background -ci
+npm run --prefix src/background build

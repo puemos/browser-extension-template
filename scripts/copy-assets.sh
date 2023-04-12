@@ -1,1 +1,1 @@
-cp -r ./src/extension/assets/* ./dist/
+cp -r ./src/assets/* ./dist/

@@ -1,1 +1,1 @@
-(npm run --prefix src/extension/popup storybook)
+(npm run --prefix src/popup storybook)

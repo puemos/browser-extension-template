@@ -1,0 +1,38 @@
+{
+  "name": "@extension/design-system",
+  "version": "3.2.2",
+  "author": "puemos",
+  "license": "MIT",
+  "main": "./dist/design-system.umd.js",
+  "module": "./dist/design-system.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite build -w",
+    "build": "tsc && vite build"
+  },
+  "devDependencies": {
+    "@types/react": "18.0.34",
+    "lucide-react": "0.139.0",
+    "prettier": "2.8.7",
+    "react": "18.2.0",
+    "typescript": "5.0.4",
+    "vite": "4.2.1",
+    "vite-plugin-dts": "^2.2.0"
+  },
+  "dependencies": {
+    "@radix-ui/react-aspect-ratio": "^1.0.2",
+    "@radix-ui/react-scroll-area": "^1.0.3",
+    "@radix-ui/react-separator": "^1.0.2",
+    "@radix-ui/react-tabs": "^1.0.3",
+    "autoprefixer": "10.4.14",
+    "class-variance-authority": "^0.5.2",
+    "clsx": "^1.2.1",
+    "postcss": "8.4.21",
+    "tailwind-merge": "^1.12.0",
+    "tailwindcss": "3.3.1",
+    "tailwindcss-animate": "^1.0.5"
+  }
+}

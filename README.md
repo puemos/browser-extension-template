@@ -153,7 +153,7 @@ WIP
 
 - Register listeners for broswer events, do some magic and change your app's shared state (using the core library)
 - Add them to `subscribeListeners` in the `index.ts` file
-- More examples: (here)[https://github.com/puemos/hls-downloader/tree/master/src/extension/extension-background/src/listeners]
+- More examples: (here)[https://github.com/puemos/hls-downloader/tree/master/src/extension-background/src/listeners]
 
 ```ts
 import { tabs } from "webextension-polyfill";
@@ -177,7 +177,7 @@ export function setTabListener(store: ReturnType<typeof createStore>) {
 
 - Implementation of the core's library services
 - You can have multiple Implementations for the same services (e.g MemoryFS, IndexedDBFS)
-- More examples: (here)[https://github.com/puemos/hls-downloader/tree/master/src/extension/extension-background/src/services]
+- More examples: (here)[https://github.com/puemos/hls-downloader/tree/master/src/extension-background/src/services]
 
 
 ```ts
@@ -286,7 +286,7 @@ Each module is separated into a controller with business logic, a view with UI o
 <img width="50%" src="https://user-images.githubusercontent.com/13174025/230898450-a75bb70a-20a4-4551-bffc-7924045e1dbd.png" />
 
 1. Run `sh ./scripts/storybook.sh`
-2. Work on the UI in `src/extension/popup`
+2. Work on the UI in `src/popup`
 
 ## Installation
 
