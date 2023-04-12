@@ -1,6 +1,7 @@
 # Browser Extension Template
 
-<img src="https://user-images.githubusercontent.com/13174025/231397933-5e876228-2f7f-428f-bf93-782947376276.gif" width="50%" />
+https://user-images.githubusercontent.com/13174025/231552420-6aab9044-3784-4f0f-a681-6009b6222496.mp4
+
 
 <br>
 
