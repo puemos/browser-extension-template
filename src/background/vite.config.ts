@@ -13,6 +13,7 @@ export default defineConfig(({ mode }) => ({
     sourcemap: true,
     minify: false,
     outDir: resolve(__dirname, "../../dist"),
+    emptyOutDir: false,
   },
   define: {
     "process.env.NODE_ENV": JSON.stringify(mode),

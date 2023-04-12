@@ -1,4 +1,4 @@
-import { Button, Input } from "@extension/design-system";
+import { Button } from "@extension/design-system";
 import React from "react";
 
 interface Props {
@@ -19,7 +19,7 @@ const SettingsView = ({
           <p className="text-sm font-semibold">Option</p>
         </div>
         <div className="">
-          <div className="h-4 p-1 rounded-lg flex flex-row justify-between items-center">
+          <div className="h-4 p-1 rounded-lg flex flex-row justify-center items-center">
             <Button
               className="w-6 h-6"
               size="sm"
@@ -29,8 +29,10 @@ const SettingsView = ({
             >
               +
             </Button>
-            <div className="flex flex-row w-4 h-2 px-4 justify-center items-center rounded-lg">
-              <Input value={option} disabled />
+            <div className="flex flex-row h-2 px-2 justify-center items-center rounded-lg">
+              <div className="text-sm border px-3 h-6 flex justify-center items-center rounded-lg">
+                {option}
+              </div>
             </div>
             <Button
               className="w-6 h-6"

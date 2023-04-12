@@ -18,5 +18,15 @@
       "css": ["content.css"],
       "matches": ["<all_urls>"]
     }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/fonts/PublicSans-Italic-VariableFont_wght.ttf",
+        "assets/fonts/PublicSans-VariableFont_wght.ttf"
+      ],
+      "matches": ["<all_urls>"]
+    }
   ]
 }

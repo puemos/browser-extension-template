@@ -1,8 +1,14 @@
-import React from "react";
-import { Box, ChakraProvider, ColorModeScript, Flex } from "@chakra-ui/react";
 import type { Preview } from "@storybook/react";
-import { BrowserRouter as Router } from "react-router-dom";
-import theme from "../src/theme";
+import React from "react";
+
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@extension/design-system";
+
+import "../src/index.css";
 
 const preview: Preview = {
   parameters: {
@@ -16,22 +22,29 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => (
-      <>
-        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-        <ChakraProvider theme={theme}>
-          <Router>
-            <Box
-              bg="gray.900"
-              width="500px"
-              height="500px"
-              borderWidth={"2px"}
-              borderColor={"white"}
-            >
+      <div id="browser-extension-template">
+        <div
+          id="browser-extension-template-app"
+          className="min-h-screen bg-white shadow-2xl transition-all p-4 font-sans text-slate-900 antialiased dark:bg-slate-900 dark:text-slate-50"
+        >
+          <Tabs defaultValue={"home"}>
+            <TabsList>
+              <TabsTrigger value="home">Home</TabsTrigger>
+              <TabsTrigger value="settings">Settings</TabsTrigger>
+              <TabsTrigger value="about">About</TabsTrigger>
+            </TabsList>
+            <TabsContent value="home">
               <Story />
-            </Box>
-          </Router>
-        </ChakraProvider>
-      </>
+            </TabsContent>
+            <TabsContent value="settings">
+              <Story />
+            </TabsContent>
+            <TabsContent value="about">
+              <Story />
+            </TabsContent>
+          </Tabs>
+        </div>
+      </div>
     ),
   ],
 };

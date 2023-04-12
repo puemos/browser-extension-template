@@ -15,7 +15,7 @@ function App() {
   const [tab, setTab] = useLocalStorage("view", "home");
 
   return (
-    <div className="min-h-screen rounded-md bg-white shadow-2xl transition-all p-4 font-sans text-slate-900 antialiased dark:bg-slate-900 dark:text-slate-50">
+    <div className="min-h-screen bg-white shadow-2xl transition-all p-4 font-sans text-slate-900 antialiased dark:bg-slate-900 dark:text-slate-50">
       <Tabs defaultValue={tab} onValueChange={setTab}>
         <TabsList>
           <TabsTrigger value="home">Home</TabsTrigger>

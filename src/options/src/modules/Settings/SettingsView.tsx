@@ -30,7 +30,7 @@ const SettingsView = ({
               +
             </Button>
             <div className="flex flex-row w-4 h-2 px-4 justify-center items-center rounded-lg">
-              <div className="text-md font-semibold border px-2 h-6 flex justify-center items-center rounded-lg">
+              <div className="text-sm border px-3 h-6 flex justify-center items-center rounded-lg">
                 {option}
               </div>
             </div>

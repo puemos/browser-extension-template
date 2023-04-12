@@ -5,7 +5,6 @@ import { resolve } from "path";
 export default defineConfig({
   build: {
     target: "es2022",
-
     minify: false,
     outDir: resolve(__dirname, "../../dist"),
     rollupOptions: {
@@ -16,6 +15,7 @@ export default defineConfig({
         assetFileNames: `content.[ext]`,
       },
     },
+    emptyOutDir: false,
   },
   sourcemap: true,
   plugins: [react()],

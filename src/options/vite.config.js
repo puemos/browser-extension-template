@@ -17,6 +17,7 @@ export default defineConfig({
         app: "./options.html",
       },
     },
+    emptyOutDir: false,
   },
   sourcemap: true,
   plugins: [react()],

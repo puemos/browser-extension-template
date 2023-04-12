@@ -23,12 +23,6 @@ const madeForYouAlbums: Album[] = [
     name: "Stateful Symphony",
     artist: "Beth Binary",
     cover:
-      "https://images.unsplash.com/photo-1606542758304-820b04394ac2?w=300&dpr=2&q=80",
-  },
-  {
-    name: "Stateful Symphony",
-    artist: "Beth Binary",
-    cover:
       "https://images.unsplash.com/photo-1598062548091-a6fb6a052562?w=300&dpr=2&q=80",
   },
   {
@@ -95,8 +89,8 @@ function AlbumArtwork({
           className="object-cover transition-all hover:scale-105"
         />
       </AspectRatio>
-      <div className="space-y-1 text-sm">
-        <h3 className="font-medium leading-none">{album.name}</h3>
+      <div className="space-y-1">
+        <h3 className="text-sm font-medium leading-none">{album.name}</h3>
         <p className="text-xs text-slate-500 dark:text-slate-400">
           {album.artist}
         </p>
