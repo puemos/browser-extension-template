@@ -3,15 +3,15 @@
   "version": "3.2.2",
   "author": "puemos",
   "license": "MIT",
-  "main": "./dist/design-system.umd.js",
-  "module": "./dist/design-system.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "dist/design-system.mjs",
+  "module": "dist/design-system.mjs",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "dev": "vite build -w",
-    "build": "tsc && vite build"
+    "build": "vite build"
   },
   "devDependencies": {
     "@types/react": "18.0.34",

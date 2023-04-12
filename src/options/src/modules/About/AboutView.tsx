@@ -20,7 +20,7 @@ const AboutView = ({ version }: Props) => {
         </a>
       </p>
 
-      <div className="p-3 h-16 flex shrink-0 items-center justify-between rounded-md border bg-slate-200 dark:bg-slate-700">
+      <div className="p-3 h-16 flex shrink-0 items-center justify-between rounded-md border bg-slate-100 dark:bg-slate-800">
         <div>
           <p className="text-sm font-semibold">
             <span aria-label="plant" role="img" className="mr-2">
@@ -31,7 +31,7 @@ const AboutView = ({ version }: Props) => {
         </div>
         <div className="text-sm font-semibold">{version}</div>
       </div>
-      <div className="p-3 h-16 flex shrink-0 items-center justify-between rounded-md border bg-slate-200 dark:bg-slate-700">
+      <div className="p-3 h-16 flex shrink-0 items-center justify-between rounded-md border bg-slate-100 dark:bg-slate-800">
         <div>
           <p className="text-sm font-semibold">
             <span aria-label="plant" role="img" className="mr-2">

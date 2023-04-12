@@ -7,6 +7,7 @@ export default defineConfig(({ mode }) => ({
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
       name: "@extension/design-system",
+      formats: ["es"],
     },
     rollupOptions: {
       external: ["react", "react-dom"],
