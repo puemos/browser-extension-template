@@ -1,6 +1,10 @@
 # Browser Extension Template
 
 
+
+<img src="https://user-images.githubusercontent.com/13174025/231397933-5e876228-2f7f-428f-bf93-782947376276.gif" width="50%" />
+
+
 <br>
 
 **Table of Contents**
