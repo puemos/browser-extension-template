@@ -21,16 +21,16 @@ https://user-images.githubusercontent.com/13174025/231552420-6aab9044-3784-4f0f-
 ### User interface
 
 - User interfaces: [React](https://react.dev/)
-- Design system: [Chakra UI](https://chakra-ui.com/)
+- Design system: [shadcn/ui](https://ui.shadcn.com/)
 - Development: [Storybook](https://storybook.js.org/)
 - Icons: [Lucide](https://lucide.dev/)
 
 ### Extension
 
-- Compitability: [WebExtension browser API Polyfill](https://github.com/mozilla/webextension-polyfill)
+- Compatibility: [WebExtension browser API Polyfill](https://github.com/mozilla/webextension-polyfill)
 - Cross-app communication: [WebExt Redux](https://github.com/tshaddix/webext-redux)
 
-### State managment
+### State management
 
 - State Container: [Redux](https://redux.js.org/)
 - Tooling: [Redux Toolkit](https://redux-toolkit.js.org/)
@@ -51,7 +51,7 @@ All the shared UI components
 - Represent your domain object
 - Apply only logic that is applicable in general to the whole entity (e.g., validating the format of a hostname)
 - Typescript classes
-- More examples: (here)[https://github.com/puemos/hls-downloader/tree/master/src/core/src/entities]
+- More examples: [here](https://github.com/puemos/hls-downloader/tree/master/src/core/src/entities)
 
 ```ts
 import { Key } from "./key";
@@ -67,10 +67,10 @@ export class Fragment {
 
 #### Use cases
 
-- Represent an isolated signle piece of your business actions: it’s what you can do with the application. Expect one use case for each business action
+- Represent an isolated single piece of your business actions: it’s what you can do with the application. Expect one use case for each business action
 - Pure business logic, plain code (except maybe some utils libraries)
-- The use case doesn’t know who triggered it and how the results are going to be presented.
-- More examples: (here)[https://github.com/puemos/hls-downloader/tree/master/src/core/src/use-cases]
+- The use case doesn’t know who triggered it and how the results will be presented.
+- More examples: [here](https://github.com/puemos/hls-downloader/tree/master/src/core/src/use-cases)
 
 ```ts
 import { Fragment } from "../entities";
@@ -90,8 +90,8 @@ export const downloadSingleFactory = (loader: ILoader) => {
 
 #### Services
 
-- Interfaces of services which will be injected to use-cases
-- More examples: (here)[https://github.com/puemos/hls-downloader/tree/master/src/core/src/services]
+- Interfaces of services that will be injected into use-cases
+- More examples: [here](https://github.com/puemos/hls-downloader/tree/master/src/core/src/services)
 
 ```ts
 export interface ILoader {
@@ -104,7 +104,7 @@ export interface ILoader {
 
 - A chain of use-cases triggered by a redux event
 - Written with the help of RxJs
-- More examples: (here)[https://github.com/puemos/hls-downloader/tree/master/src/core/src/controllers]
+- More examples: [here](https://github.com/puemos/hls-downloader/tree/master/src/core/src/controllers)
 
 ```ts
 import { Epic } from "redux-observable";
@@ -149,9 +149,9 @@ WIP
 
 ##### Listeners
 
-- Register listeners for broswer events, do some magic and change your app's shared state (using the core library)
+- Register listeners for browser events, do some magic, and change your app's shared state (using the core library)
 - Add them to `subscribeListeners` in the `index.ts` file
-- More examples: (here)[https://github.com/puemos/hls-downloader/tree/master/src/extension-background/src/listeners]
+- More examples: [here](https://github.com/puemos/hls-downloader/tree/master/src/extension-background/src/listeners)
 
 ```ts
 import { tabs } from "webextension-polyfill";
@@ -175,7 +175,7 @@ export function setTabListener(store: ReturnType<typeof createStore>) {
 
 - Implementation of the core's library services
 - You can have multiple Implementations for the same services (e.g MemoryFS, IndexedDBFS)
-- More examples: (here)[https://github.com/puemos/hls-downloader/tree/master/src/extension-background/src/services]
+- More examples: [here](https://github.com/puemos/hls-downloader/tree/master/src/extension-background/src/services)
 
 ```ts
 type FetchFn<Data> = () => Promise<Data>;
@@ -269,7 +269,7 @@ Each module is separated into a controller with business logic, a view with UI o
 ### Build
 
 1. Clone the repo
-2. Ensure you have node, npm installed
+2. Ensure you have node, and npm installed
 3. Run `sh ./scripts/build.sh`
 4. Raw files will be at `./dist/`
 5. The zip will be in `./extension-archive.zip`
@@ -308,7 +308,7 @@ Each module is separated into a controller with business logic, a view with UI o
 
 The MIT License (MIT)
 
-Copyright (c) 2022 Shy Alter
+Copyright (c) 2023 Shy Alter
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
